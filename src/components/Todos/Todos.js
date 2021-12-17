@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Header from "../Header/Header";
-import TodoList from "./TodoList";
 
 const Todos = () => {
   const { user } = useAuth();
@@ -20,7 +19,7 @@ const Todos = () => {
         </div>
       </Container>
       {/* todo list  */}
-      {/* <TodoList /> */}
+
       <Outlet />
     </>
   );

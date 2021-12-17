@@ -1,5 +1,4 @@
 import React from "react";
-import { Form } from "react-bootstrap";
 import { AiOutlineCheckCircle, AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
