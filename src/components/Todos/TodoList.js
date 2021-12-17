@@ -1,17 +1,10 @@
 import React from "react";
 import { Button, Container, Form, Stack } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import SingleTodo from "./SingleTodo";
 
-const todos = [
-  { id: "0", name: "Hello", status: "pending" },
-  { id: "1", name: "Hello", status: "pending" },
-  { id: "2", name: "Hello", status: "completed" },
-  { id: "3", name: "Hello", status: "pending" },
-  { id: "4", name: "Hello", status: "completed" },
-  { id: "5", name: "Hello", status: "pending" },
-];
-
 const TodoList = () => {
+  const todoList = useSelector((state) => state.todos.todoList);
   return (
     <Container className="py-3 px-4 shadow rounded-3 w-50">
       <h4 className="text-center colored-text">Todos</h4>
@@ -22,7 +15,7 @@ const TodoList = () => {
         </Button>
       </Stack>
       <div className=" mx-auto mt-3">
-        {todos.map((todo) => (
+        {todoList?.map((todo) => (
           <SingleTodo key={todo.id} todo={todo} />
         ))}
       </div>
