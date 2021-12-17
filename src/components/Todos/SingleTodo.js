@@ -2,7 +2,11 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import { AiOutlineCheckCircle, AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { markAsCompleted } from "../../redux/slices/todoSlice";
+import { toast } from "react-toastify";
+import {
+  deleteFromTodoList,
+  markAsCompleted,
+} from "../../redux/slices/todoSlice";
 
 const SingleTodo = ({ todo }) => {
   const dispatch = useDispatch();
@@ -17,13 +21,20 @@ const SingleTodo = ({ todo }) => {
       <div className="ms-auto">
         {todoList.find((todo) => todo.id === id) && (
           <AiOutlineCheckCircle
-            onClick={() => dispatch(markAsCompleted(todo))}
+            onClick={() => {
+              dispatch(markAsCompleted(todo));
+              toast.success("Mark as completed");
+            }}
             style={{ color: "#006d77", cursor: "pointer" }}
             title="Mark as completed"
             className="fs-4 me-2"
           />
         )}
         <AiOutlineDelete
+          onClick={() => {
+            dispatch(deleteFromTodoList(id));
+            toast.info("Deleted todo");
+          }}
           style={{ color: "#d90429", cursor: "pointer" }}
           title="Delete from todos"
           className="fs-4"

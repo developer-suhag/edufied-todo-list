@@ -3,6 +3,7 @@ import { Button, Container, Form, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { addTodo } from "../../redux/slices/todoSlice";
 import SingleTodo from "./SingleTodo";
 
@@ -19,6 +20,7 @@ const TodoList = () => {
       name: todoRef.current.value,
     };
     dispatch(addTodo(newTodo));
+    toast.success("New Todo Added");
     e.target.reset();
   };
   return (
@@ -29,6 +31,7 @@ const TodoList = () => {
           <Form.Control
             ref={todoRef}
             className="me-auto"
+            required
             placeholder="Add new task"
           />
           <Button type="submit" variant="" className="edufied-outline-btn px-3">

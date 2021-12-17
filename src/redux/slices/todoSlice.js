@@ -10,6 +10,9 @@ const todoSlice = createSlice({
     addTodo: (state, { payload }) => {
       state.todoList.push(payload);
     },
+    deleteFromTodoList: (state, { payload }) => {
+      state.todoList = state.todoList.filter((todo) => todo.id !== payload);
+    },
     markAsCompleted: (state, { payload }) => {
       state.todoList = state.todoList.filter((todo) => todo.id !== payload.id);
       state.completedList.push(payload);
@@ -17,6 +20,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, markAsCompleted } = todoSlice.actions;
+export const { addTodo, markAsCompleted, deleteFromTodoList } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;
