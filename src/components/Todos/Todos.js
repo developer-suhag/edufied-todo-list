@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
 import Header from "../Header/Header";
-import "./Todos.css";
+import TodoList from "./TodoList";
 
 const Todos = () => {
   const { user } = useAuth();
@@ -10,7 +10,7 @@ const Todos = () => {
     <>
       {/* header  */}
       <Header />
-      <Container className="py-5">
+      <Container className="py-3">
         <div className="text-center">
           <h3>
             Welcome back{" "}
@@ -18,6 +18,8 @@ const Todos = () => {
           </h3>
         </div>
       </Container>
+      {/* todo list  */}
+      <TodoList />
     </>
   );
 };
