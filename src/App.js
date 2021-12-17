@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Login from "./components/Login/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
+import ComplatedList from "./components/Todos/ComplatedList";
+import TodoList from "./components/Todos/TodoList";
 import Todos from "./components/Todos/Todos";
 import AuthProvider from "./context/AuthProvider";
 
@@ -24,7 +26,10 @@ function App() {
                   <Todos />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route path="" element={<TodoList />} />
+              <Route path="completed" element={<ComplatedList />} />
+            </Route>
           </Routes>
 
           <ToastContainer

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Button, Container, Form, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { addTodo } from "../../redux/slices/todoSlice";
 import SingleTodo from "./SingleTodo";
 
@@ -16,10 +17,9 @@ const TodoList = () => {
     const newTodo = {
       id: `${todoList.length + 1}`,
       name: todoRef.current.value,
-      state: "pending",
     };
-    console.log("object", newTodo);
     dispatch(addTodo(newTodo));
+    e.target.reset();
   };
   return (
     <Container className="py-3 px-4 shadow rounded-3 w-50">
@@ -41,6 +41,11 @@ const TodoList = () => {
         {todoList?.map((todo) => (
           <SingleTodo key={todo.id} todo={todo} />
         ))}
+      </div>
+      <div className="text-end mt-4">
+        <Link className="text-info" to="/todos/completed">
+          Completed todos
+        </Link>
       </div>
     </Container>
   );

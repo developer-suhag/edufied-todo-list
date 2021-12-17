@@ -11,7 +11,8 @@ const todoSlice = createSlice({
       state.todoList.push(payload);
     },
     markAsCompleted: (state, { payload }) => {
-      //   state.todoList
+      state.todoList = state.todoList.filter((todo) => todo.id !== payload.id);
+      state.completedList.push(payload);
     },
   },
 });

@@ -1,11 +1,11 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { AiOutlineCheckCircle, AiOutlineDelete } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { markAsCompleted } from "../../redux/slices/todoSlice";
 
 const SingleTodo = ({ todo }) => {
-  const handleDone = (e) => {
-    console.log("adadf");
-  };
+  const dispatch = useDispatch();
   return (
     <div
       style={{ backgroundColor: "#edf6f9" }}
@@ -14,6 +14,7 @@ const SingleTodo = ({ todo }) => {
       <p className="m-0 fs-5">{todo.name}</p>
       <div className="ms-auto">
         <AiOutlineCheckCircle
+          onClick={() => dispatch(markAsCompleted(todo))}
           style={{ color: "#006d77", cursor: "pointer" }}
           title="Mark as completed"
           className="fs-4 me-2"
