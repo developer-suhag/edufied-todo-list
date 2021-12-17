@@ -37,6 +37,7 @@ const TodoList = () => {
         </Stack>
       </Form>
       <div className=" mx-auto mt-3">
+        {todoList.length === 0 && <p>Look like you don't have any todo</p>}
         {todoList?.map((todo) => (
           <SingleTodo key={todo.id} todo={todo} />
         ))}
